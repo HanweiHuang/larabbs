@@ -1,17 +1,25 @@
 @extends('layouts.app')
 
-@section('title', 'Topic List')
+@section('title', isset($category) ? $category->name : 'Topic List')
 
 @section('content')
 
     <div class="row">
         <div class="col-lg-9 col-md-9 topic-list">
+
+            @if (isset($category))
+                <div class="alert alert-info" role="alert">
+                    {{ $category->name }} ：{{ $category->description }}
+                </div>
+            @endif
+
             <div class="panel panel-default">
 
                 <div class="panel-heading">
                     <ul class="nav nav-pills">
-                        <li role="presentation" class="active"><a href="#">Last Reply</a></li>
-                        <li role="presentation"><a href="#">New Publish</a></li>
+                        <li class="{{ active_class( ! if_query('order', 'recent') ) }}"><a href="{{ Request::url() }}?order=default">Order By Reply</a></li>
+                        <li class="{{ active_class(if_query('order', 'recent')) }}"><a href="{{ Request::url() }}?order=recent">Order By Public</a></li>
+
                     </ul>
                 </div>
 
