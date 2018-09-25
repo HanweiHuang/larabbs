@@ -18,4 +18,13 @@ class TopicObserver
     {
         //
     }
+
+    /**
+     * @param Topic $topic
+     * will be toggled when saveing, make excerpt by topic content
+     */
+    public function saving(Topic $topic)
+    {
+        $topic->excerpt = make_excerpt($topic->body);
+    }
 }
