@@ -21,11 +21,13 @@ class TopicObserver
 
     /**
      * @param Topic $topic
-     * will be toggled when saveing, make excerpt by topic content
+     * will be toggled when saving, make excerpt by topic content
+     * Observer, will toggle when save data into database
      */
     public function saving(Topic $topic)
     {
         $topic->body = clean($topic->body, 'user_topic_body');
+
         $topic->excerpt = make_excerpt($topic->body);
     }
 }
