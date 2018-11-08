@@ -3,11 +3,11 @@
     <ul class="list-group">
         @foreach ($topics as $topic)
             <li class="list-group-item">
-                <a href="{{ route('topics.show', $topic->id) }}">
+                <a href="{{ $topic->link() }}">
                     {{ $topic->title }}
                 </a>
                 <span class="meta pull-right">
-                {{ $topic->reply_count }} 回复
+                {{ $topic->reply_count }} Reply
                 <span> ⋅ </span>
                     {{ $topic->created_at->diffForHumans() }}
             </span>
@@ -16,7 +16,7 @@
     </ul>
 
 @else
-    <div class="empty-block">暂无数据 ~_~ </div>
+    <div class="empty-block">No data currently ~_~ </div>
 @endif
 
 {!! $topics->render() !!}

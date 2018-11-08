@@ -44,4 +44,9 @@ class Topic extends Model
         // 按照创建时间排序
         return $query->orderBy('created_at', 'desc');
     }
+
+    //create url with topic_id/topic_slug/and_other_params
+    public function link($params = []){
+        return route('topics.show', array_merge([$this->id, $this->slug], $params));
+    }
 }
