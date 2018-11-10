@@ -11,6 +11,10 @@ class Topic extends Model
         'excerpt',
         'slug'];
 
+    public function replies(){
+        return $this->hasMany(Reply::class);
+    }
+
     //data relation
     public function category(){
         return $this->belongsTo(Category::class);
