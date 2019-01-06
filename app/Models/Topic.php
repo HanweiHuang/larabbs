@@ -11,6 +11,7 @@ class Topic extends Model
         'excerpt',
         'slug'];
 
+    //one topic has many replys
     public function replies(){
         return $this->hasMany(Reply::class);
     }

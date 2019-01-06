@@ -12,9 +12,11 @@ class ReplyObserver
 {
     public function created(Reply $reply)
     {
+        //when we get a reply
         $topic = $reply->topic;
+        //let topic table reply_count field add 1
         $reply->topic->increment('reply_count',1);
-
+        //let user table add one notification record
         $topic->user->notify(new TopicReplied($reply));
     }
 
