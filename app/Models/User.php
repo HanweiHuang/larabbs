@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 use Auth;
 
 class User extends Authenticatable
 {
+    //provide by Spatie\Permission
+    use HasRoles;
 
     //use MustVerifyEmailTrait;
 
