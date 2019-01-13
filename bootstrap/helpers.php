@@ -21,4 +21,14 @@ function make_excerpt($value, $length = 200)
     $excerpt = trim(preg_replace('/\r\n|\r|\n+/', ' ', strip_tags($value)));
     return str_limit($excerpt, $length);
 }
+
+
+//for administrator config
+if (!function_exists('manage_contents')) {
+    function manage_contents()
+    {
+        return Auth::check() && Auth::user()->can('manage_contents');
+    }
+}
+
 ?>

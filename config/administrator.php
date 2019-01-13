@@ -6,6 +6,7 @@ return array(
      * Package URI
      *
      * @type string
+     * backend url
      */
     'uri' => 'admin',
 
@@ -58,7 +59,11 @@ return array(
      * 		'Analytics' => array('E-Commerce' => 'page.ecommerce.analytics'),
      *	)
      */
-    'menu' => [],
+    'menu' => [
+        'user and permission' => [
+            'users',
+        ],
+    ],
 
     /*
      * The permission option is the highest-level authentication check that lets you define a closure that should return true if the current user
@@ -66,9 +71,11 @@ return array(
      *
      * @type closure
      */
-    'permission' => function () {
-        return Auth::check();
-    },
+    'permission' => 'manage_contents',
+    // function () {
+    //     //return Auth::check();
+    //     return Auth::check() && Auth::user()->can('manage_contents');
+    // },
 
     /*
      * This determines if you will have a dashboard (whose view you provide in the dashboard_view option) or a non-dashboard home
@@ -90,7 +97,7 @@ return array(
      *
      * @type string
      */
-    'home_page' => '',
+    'home_page' => 'users',
 
     /*
      * The route to which the user will be taken when they click the "back to site" button
