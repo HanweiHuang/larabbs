@@ -22,7 +22,7 @@ return array(
      *
      * @type string
      */
-    'title' => config('app.name'),
+    'title' => 'larabbs',//config('app.name'),
 
     /*
      * The path to your model config directory
