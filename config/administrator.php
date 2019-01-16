@@ -60,10 +60,15 @@ return array(
      *	)
      */
     'menu' => [
-        'user and permission' => [
+        'User and Permission' => [
             'users',
             'roles',
             'permissions',
+        ],
+        'Content Management' => [
+            'categories',
+            'topics',
+            'replies',
         ],
     ],
 
