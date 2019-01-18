@@ -81,11 +81,10 @@ return array(
      *
      * @type closure
      */
-    'permission' => 'manage_contents',
-    // function () {
-    //     //return Auth::check();
-    //     return Auth::check() && Auth::user()->can('manage_contents');
-    // },
+    'permission' => function () {
+        //return Auth::check();
+        return Auth::check() && Auth::user()->can('manage_contents');
+    },
 
     /*
      * This determines if you will have a dashboard (whose view you provide in the dashboard_view option) or a non-dashboard home
@@ -107,7 +106,7 @@ return array(
      *
      * @type string
      */
-    'home_page' => 'users',
+    'home_page' => 'topics',
 
     /*
      * The route to which the user will be taken when they click the "back to site" button
@@ -121,7 +120,7 @@ return array(
      *
      * @type string
      */
-    'login_path' => 'login',
+    'login_path' => 'permission-denied',
 
     /*
      * The logout path is the path where Administrator will send the user when they click the logout link
