@@ -70,6 +70,9 @@ return array(
             'topics',
             'replies',
         ],
+        'Site Management' => [
+            'settings.site',
+        ],
     ],
 
     /*

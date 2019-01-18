@@ -8,8 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'LaraBBS') - Laravel Harvey</title>
-    <meta name="description" content="@yield('description','laraHarvey BBs')">
+    <title>@yield('title', 'LaraBBS') - {{setting('site_name', 'Harvey Laravel')}}</title>
+    <meta name="description" content="@yield('description',setting('seo_description','larabbs'))">
+    <meta name="keyword" content="@yield('keyword', setting('keyword', setting('seo_keyword','LaraBBS, Forum,Bbs, Developer Forum')))">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
