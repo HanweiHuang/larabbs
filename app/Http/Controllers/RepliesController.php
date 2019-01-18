@@ -26,9 +26,12 @@ class RepliesController extends Controller
 
 	public function destroy(Reply $reply)
 	{
+        //distribute authority to reply
 		$this->authorize('destroy', $reply);
 		$reply->delete();
-
-		return redirect()->route('replies.index')->with('message', 'Deleted successfully.');
+        //model reply has a function topic and topic has a function link, link will run a route
+        //so actually here, the link is a route
+        return redirect()->to($reply->topic->link())->with('message', 'Deleted successfully.');
+		//return redirect()->route('replies.index')->with('message', 'Deleted successfully.');
 	}
 }
