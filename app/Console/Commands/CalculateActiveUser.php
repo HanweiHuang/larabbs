@@ -5,6 +5,8 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\User;
 
+use Log;
+
 class CalculateActiveUser extends Command
 {
     /**
@@ -38,6 +40,7 @@ class CalculateActiveUser extends Command
      */
     public function handle(User $user)
     {
+        laraLog("Log test for laratest");
         //calculate
         $this->info('Calculating ...');
         $user->calculateAndCacheActiveUsers();
