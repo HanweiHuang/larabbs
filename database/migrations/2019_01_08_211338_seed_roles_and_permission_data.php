@@ -51,13 +51,13 @@ class SeedRolesAndPermissionData extends Migration
 
         //here actually we use DB operate database directly, we did not use model here.
         //so Model::unguard and Model::regard means nothing here
-        Model::unguard();
-        DB::table($tableNames['role_has_permission'])->delete();
+        //Model::unguard();
+        DB::table($tableNames['role_has_permissions'])->delete();
         DB::table($tableNames['model_has_roles'])->delete();
-        DB::table($tableNames['model_has_permission'])->delete();
+        DB::table($tableNames['model_has_permissions'])->delete();
         DB::table($tableNames['roles'])->delete();
-        DB::table($tableNames['permission'])->delete();
-        Model::regard();
+        DB::table($tableNames['permissions'])->delete();
+        //Model::regard();
     }
 
 
