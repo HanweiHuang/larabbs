@@ -9,6 +9,9 @@ use Auth;
 
 class User extends Authenticatable
 {
+    //traits about active users
+    use Traits\ActiveUserHelper;
+
     //provide by Spatie\Permission
     use HasRoles;
 
