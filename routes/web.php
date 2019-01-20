@@ -11,11 +11,9 @@
 |
 */
 
-Route::get('/','PagesController@root')->name('root');
+// Route::get('/','PagesController@root')->name('root');
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/','TopicsController@index')->name('root');
 
 //Auth::routes();
 // Authentication Routes...
