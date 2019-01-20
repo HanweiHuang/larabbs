@@ -8356,6 +8356,13 @@ body {
 
 /* header */
 
+.avatar-topnav {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+}
+
 .navbar-static-top {
   border-color: #e7e7e7;
   background-color: #fff;
