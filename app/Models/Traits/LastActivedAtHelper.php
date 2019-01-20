@@ -13,11 +13,9 @@ trait LastActivedAtHelper{
     //record actived time to redis
     public function recordLastActivedAt(){
 
-        //get today date
-        $date = Carbon::now()->toDateString();
+        $hash = $this->getHashFromDateString(Carbon::now()->toDateString());
 
-        $hash = $this->hash_prefix . $date;
-        $field = $this->field_prefix . $this->id;
+        $field = $this->getHashField();
 
         //dd(Redis::hGetAll($hash));
 
@@ -27,14 +25,13 @@ trait LastActivedAtHelper{
         Redis::hSet($hash, $field, $now);
     }
 
+    //sync from redis to database
     public function syncUserActivedAt(){
 
-        $yesterday_date = Carbon::yesterday()->toDateString();
-        //$today_date = Carbon::now()->toDateString();
+        $time_date = Carbon::yesterday()->toDateString();
+        //$time_date = Carbon::now()->toDateString();
 
-        $time_date = $yesterday_date;
-
-        $hash = $this->hash_prefix . $time_date;
+        $hash = $this->getHashFromDateString($time_date);
 
         $dates = Redis::hGetAll($hash);
 
@@ -51,4 +48,40 @@ trait LastActivedAtHelper{
         //clear yesterday redis date
         Redis::del($hash);
     }
+
+
+
+
+    //
+    public function getLastActivedAtAttribute($value){
+
+        $hash = $this->getHashFromDateString(Carbon::now()->toDateString());
+
+        $field = $this->getHashField();
+
+        $datetime = Redis::hGet($hash, $field) ? : $value;
+
+        if($datetime){
+            return new Carbon($datetime);
+        }else{
+            return $this->created_at;
+        }
+    }
+
+
+
+    //help functions
+    public function getHashFromDateString($date){
+        return $this->hash_prefix . $date;
+    }
+
+
+    public function getHashField(){
+        return $this->field_prefix . $this->id;
+    }
+
+
+
+
+
 }

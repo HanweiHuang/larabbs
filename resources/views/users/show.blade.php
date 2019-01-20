@@ -19,8 +19,12 @@
                         <p>{{ $user->introduction }} </p>
                         <hr>
                         <h4><strong>Register at</strong></h4>
-                        <?php //dd($user);?>
                         <p>{{ $user->created_at->diffForHumans() }}</p>
+
+                        <hr>
+                        <h4><strong>Last Actived At</strong></h4>
+                        <p title="{{$user->last_actived_at}}">{{ $user->last_actived_at->diffForHumans() }}</p>
+
                     </div>
                 </div>
             </div>
