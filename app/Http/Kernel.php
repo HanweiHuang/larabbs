@@ -13,12 +13,15 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
+
+    //group middleware , will run fisrt of all
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
+
     ];
 
     /**
@@ -26,7 +29,9 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
+
     protected $middlewareGroups = [
+        //middle group which will used to 'routes/web.php'
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
@@ -35,8 +40,12 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+
+            //record user last active time
+            \App\Http\Middleware\RecordLastActivedTime::class,
         ],
 
+        //middle group which will used to 'routes/api.php'
         'api' => [
             'throttle:60,1',
             'bindings',
@@ -49,6 +58,8 @@ class Kernel extends HttpKernel
      * These middleware may be assigned to groups or used individually.
      *
      * @var array
+     *
+     * set a simple name for middleware, like above 'api' which used simple name
      */
     protected $routeMiddleware = [
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,

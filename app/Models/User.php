@@ -9,6 +9,10 @@ use Auth;
 
 class User extends Authenticatable
 {
+
+    //traits about last active time
+    use Traits\LastActivedAtHelper;
+
     //traits about active users
     use Traits\ActiveUserHelper;
 

@@ -7,6 +7,8 @@ if (!function_exists('laraLog')) {
     {
         if(!$path){
             $path = "/logs/job/error.log";
+        }else{
+            $path = "/log/job/".$path;
         }
         $monolog = Log::getMonolog();
         $monolog->popHandler();
