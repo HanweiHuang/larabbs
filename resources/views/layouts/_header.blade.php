@@ -40,8 +40,6 @@
                 @guest
                     <li><a href="{{ route('login') }}">Login</a></li>
                     <li><a href="{{ route('register') }}">Register</a></li>
-
-                    <li><a href="{{ route('switch_lang', ['lang' => App::getLocale()]) }}">{{App::getLocale()}}</a></li>
                 @else
                     <li>
                         <a href="{{ route('topics.create') }}">
@@ -103,32 +101,33 @@
                             </li>
                         </ul>
                     </li>
+                @endguest
 
-                    <li class="dropdown">
+                <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
-                                <img class="avatar-topnav" src="{{ Auth::user()->avatar }}" class="img-responsive img-circle" width="30px" height="30px">
+
+                                <img class="avatar-topnav" src="{{url('/')}}/images/icon/{{App::getLocale()}}_flag.png" class="img-responsive img-circle" width="30px" height="30px">
                             </span>
+                            <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                 <a href="{{ route('switch_lang', ['lang' => 'cn']) }}">
-                                    <span class="bfh-countries" data-country="US" data-flags="true"></span>
-                                    CN
+                                    <span class="flag-icon flag-icon-cn"></span>
+                                    中文
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('switch_lang', ['lang' => 'en']) }}">
-                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                    EN
+                                    <span class="flag-icon flag-icon-us"></span>
+                                    English
                                 </a>
                             </li>
                         </ul>
 
                     </li>
-
-                @endguest
             </ul>
         </div>
     </div>
