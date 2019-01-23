@@ -13,6 +13,7 @@
 
 // Route::get('/','PagesController@root')->name('root');
 
+
 Route::get('/','TopicsController@index')->name('root');
 
 //Auth::routes();
@@ -30,6 +31,9 @@ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+//switch language
+Route::get('sl/{lang}', 'UtilController@switchLanguage')->name('switch_lang');
 
 //have home page now, don't need it anymore
 //Route::get('/home', 'HomeController@index')->name('home');
@@ -50,6 +54,7 @@ Route::resource('notifications', 'NotificationsController', ['only' => ['index']
 
 //
 Route::get('permission-denied', 'PagesController@permissionDenied')->name('permission-denied');
+
 
 
 //

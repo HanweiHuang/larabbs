@@ -19,11 +19,18 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li class="{{ active_class(if_route('topics.index')) }}"><a href="{{ route('topics.index') }}">Topic</a></li>
-                <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 1))) }}"><a href="{{ route('categories.show', 1) }}">Reference</a></li>
-                <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 2))) }}"><a href="{{ route('categories.show', 2) }}">Course</a></li>
-                <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 3))) }}"><a href="{{ route('categories.show', 3) }}">Questions</a></li>
-                <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 4))) }}"><a href="{{ route('categories.show', 4) }}">Notice</a></li>
+                <li class="{{ active_class(if_route('topics.index')) }}"><a href="{{ route('topics.index') }}">{{trans('header.topic')}}</a></li>
+                <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 1))) }}"><a href="{{ route('categories.show', 1) }}">
+                    {{trans('header.reference')}}</a></li>
+                <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 2))) }}"><a href="{{ route('categories.show', 2) }}">
+                    {{trans('header.course')}}
+                </a></li>
+                <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 3))) }}"><a href="{{ route('categories.show', 3) }}">
+                    {{trans('header.questions')}}
+                </a></li>
+                <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 4))) }}"><a href="{{ route('categories.show', 4) }}">
+                    {{trans('header.notice')}}
+                </a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -62,7 +69,7 @@
                                 <li>
                                     <a href="{{url(config('administrator.uri'))}}">
                                         <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
-                                        Admin Dashboard
+                                        {{trans('header.admin_dashboard')}}
                                     </a>
                                 </li>
                             @endcan
@@ -70,13 +77,13 @@
                             <li>
                                 <a href="{{ route('users.show', Auth::id()) }}">
                                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                    User Center
+                                        {{trans('header.user_center')}}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('users.edit', Auth::id()) }}">
                                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                    User Edit
+                                        {{trans('header.user_edit')}}
                                 </a>
                             </li>
 
@@ -85,7 +92,7 @@
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                     <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                                    Logout
+                                        {{trans('header.log_out')}}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -95,6 +102,32 @@
                         </ul>
                     </li>
                 @endguest
+
+                <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
+
+                                <img class="avatar-topnav" src="{{url('/')}}/images/icon/{{App::getLocale()}}_flag.png" class="img-responsive img-circle" width="30px" height="30px">
+                            </span>
+                            <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="{{ route('switch_lang', ['lang' => 'cn']) }}">
+                                    <span class="flag-icon flag-icon-cn"></span>
+                                    中文
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('switch_lang', ['lang' => 'en']) }}">
+                                    <span class="flag-icon flag-icon-us"></span>
+                                    English
+                                </a>
+                            </li>
+                        </ul>
+
+                    </li>
             </ul>
         </div>
     </div>

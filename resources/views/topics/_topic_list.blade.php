@@ -24,7 +24,7 @@
 
                         <a href="{{ route('categories.show', $topic->category->id) }}" title="{{ $topic->category->name }}">
                             <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
-                            {{ $topic->category->name }}
+                            {{ trans("topic.".strtolower($topic->category->name)) }}
                         </a>
 
                         <span> • </span>
