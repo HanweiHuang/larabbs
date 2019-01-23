@@ -17,8 +17,8 @@
 
                 <div class="panel-heading">
                     <ul class="nav nav-pills">
-                        <li class="{{ active_class( ! if_query('order', 'recent') ) }}"><a href="{{ Request::url() }}?order=default">Order By Reply</a></li>
-                        <li class="{{ active_class(if_query('order', 'recent')) }}"><a href="{{ Request::url() }}?order=recent">Order By Public</a></li>
+                        <li class="{{ active_class( ! if_query('order', 'recent') ) }}"><a href="{{ Request::url() }}?order=default">{{trans('topic.order_by_reply')}}</a></li>
+                        <li class="{{ active_class(if_query('order', 'recent')) }}"><a href="{{ Request::url() }}?order=recent">{{trans('topic.order_by_public')}}</a></li>
 
                     </ul>
                 </div>

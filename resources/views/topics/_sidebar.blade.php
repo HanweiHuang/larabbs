@@ -1,7 +1,8 @@
 <div class="panel panel-default">
     <div class="panel-body">
         <a href="{{ route('topics.create') }}" class="btn btn-success btn-block" aria-label="Left Align">
-            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> New Topic
+            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+            {{trans('sidebar.new_topic')}}
         </a>
     </div>
 </div>
@@ -10,7 +11,9 @@
     <div class="panel panel-default">
         <div class="panel-body active-users">
 
-            <div class="text-center">Active Users</div>
+            <div class="text-center">
+                {{trans('sidebar.active_user')}}
+            </div>
             <hr>
 
             @foreach($active_users as $active_user)
@@ -32,7 +35,9 @@
 @if(count($links))
     <div class='panel panel-default'>
         <div class="panel-body active-users">
-            <div class="text-center">Resource Recommend</div>
+            <div class="text-center">
+                {{trans('sidebar.resource_recommand')}}
+            </div>
             <hr>
 
             @foreach($links as $link)

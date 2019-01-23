@@ -16,3 +16,12 @@ if (!function_exists('laraLog')) {
         Log::info('single-log: '. $data);
     }
 }
+
+
+//fro transfer
+
+if(!function_exists('T')){
+    function T($code, $lang='en'){
+
+    }
+}

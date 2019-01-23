@@ -43,6 +43,7 @@ class Kernel extends HttpKernel
 
             //record user last active time
             \App\Http\Middleware\RecordLastActivedTime::class,
+            'switch_lang',
         ],
 
         //middle group which will used to 'routes/api.php'
@@ -68,5 +69,8 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+
+        //switch language
+        'switch_lang' => \App\Http\Middleware\SwitchLanguage::class,
     ];
 }
