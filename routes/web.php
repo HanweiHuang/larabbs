@@ -52,8 +52,22 @@ Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]
 
 Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
 
-//
+//permission denied
 Route::get('permission-denied', 'PagesController@permissionDenied')->name('permission-denied');
+
+
+Route::get('photo_lib','PhotoLibraryController@index')->name('photo_lib.index');
+
+
+
+
+
+
+
+
+
+
+
 
 
 
