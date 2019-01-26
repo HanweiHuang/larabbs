@@ -8,7 +8,10 @@ class PhotoLibraryController extends Controller{
 
     public function index(Request $request){
 
-        return view('gallery.index');
+        $disk = \Storage::disk('qiniu');
+        $v = $disk->url('20190126/UNADJUSTEDNONRAW_thumb_1249.jpg');
+
+        return view('gallery.index', compact('v'));
 
     }
 
