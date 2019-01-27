@@ -4,27 +4,31 @@
         @foreach ($folders as $folder)
             <li class="media">
                 <div class="media-left">
-                    <a href="">
+
                         {{-- <img class="media-object img-thumbnail" style="width: 52px; height: 52px;" src=""> --}}
-                        <span class="glyphicon glyphicon-folder-close"></span>
-                    </a>
+                    <span class="glyphicon glyphicon-folder-close"></span>
+
+
                 </div>
 
                 <div class="media-body">
 
                     <div class="media-heading">
-                        <a href="{{route('folders.show', $folder->name)}}" title="{{ $folder->name }}">
+                        <a class="folder-link" href="{{route('folders.show', $folder->name)}}" title="{{ $folder->name }}">
                             {{ $folder->name }}
                         </a>
-                        <a class="pull-right" href="" >
-                            <span class="badge">  </span>
+
+
+                        <a class="pull-right" href="" style="margin-left:10px;">
+                            <span class="badge"> {{$folder->files_size}} </span>
                         </a>
+
+                        <span class="update_time pull-right">
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                            <span class="timeago" title="最后活跃于">{{ $folder->updated_at->diffForHumans() }}</span>
+                        </span>
                     </div>
 
-                    <div class="media-body meta">
-                        <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                        <span class="timeago" title="最后活跃于">{{ $folder->updated_at->diffForHumans() }}</span>
-                    </div>
 
                 </div>
             </li>

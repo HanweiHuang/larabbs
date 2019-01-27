@@ -27,10 +27,13 @@ class FoldersController extends Controller{
     public function index(Request $request, Folder $folder)
     {
         $folders = Folder::all();
+        foreach($folders as $folder){
+            $files_size = sizeof(json_decode($folder->data));
+            $folder->setAttribute('files_size', $files_size);
+        }
 
         return view('gallery.index', compact('folders'));
     }
-
 
     public function show(Request $request, $folder){
 
@@ -40,7 +43,14 @@ class FoldersController extends Controller{
             $disk = $this->getStorageObj('qiniu');
             $files = $disk->allFiles($folder);
             $f_urls = $this->getFilesUrls($files);
-            return view('gallery.show', compact('files','f_urls'));
+            //json
+            $j_f_urls = json_encode($f_urls);
+            //save to database
+            $obj_folder = Folder::where('name', $folder)->first();
+            $obj_folder->data = $j_f_urls;
+            $obj_folder->save();
+
+            return view('gallery.show', compact('files','f_urls','folder'));
         }
     }
 

@@ -9004,6 +9004,20 @@ body {
   font-size: 0.9em;
 }
 
+/*folders css*/
+
+.folders-index-page .folders-index .badge {
+  background-color: #d8d8d8;
+}
+
+.folders-index-page .folders-index .update_time {
+  color: #b3b3b3;
+}
+
+.folders-index-page .folders-index .folder-link {
+  color: #636b6f;
+}
+
 /*files masonry*/
 
 .masonry_glo {

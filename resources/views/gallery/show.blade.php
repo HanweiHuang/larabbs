@@ -4,12 +4,12 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="row folders-show gallery">
         <div class="col-lg-9 col-md-9 topic-list">
 
 
             <div class="alert alert-info" role="alert">
-                For Desc Only
+                {{trans('gallery.folder_name') .': '. $folder}}
             </div>
 
 
