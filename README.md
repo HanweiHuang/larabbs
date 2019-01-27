@@ -59,3 +59,23 @@
         1. manage_contents
         2. manage_users
         3. edit_settings
+
+
+#上传到qiniu云 处理方式。
+基于七牛云没有 文件夹概念， 需要使用前缀来区分文件夹。
+1.上传时候确定前缀，在本地创建文件夹。
+2.文件夹以数据库存储
+
+Folder
+id //primary key
+name //fold name
+type //gallery(暂时),还可能有vedio
+data //url
+create_at 
+last_visit
+visible 
+comment //desc
+
+
+
+//

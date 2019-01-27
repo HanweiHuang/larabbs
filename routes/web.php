@@ -55,10 +55,9 @@ Route::resource('notifications', 'NotificationsController', ['only' => ['index']
 //permission denied
 Route::get('permission-denied', 'PagesController@permissionDenied')->name('permission-denied');
 
-
-Route::get('photo_lib','PhotoLibraryController@index')->name('photo_lib.index');
-
-
+//folder
+Route::resource('folders', 'FoldersController', ['only' => ['index']]);
+Route::get('folders/{folder}', 'FoldersController@show')->name('folders.show');
 
 
 
