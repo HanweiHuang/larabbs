@@ -179,6 +179,8 @@ return [
 
         Frozennode\Administrator\AdministratorServiceProvider::class,
 
+        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class
+
     ],
 
     /*

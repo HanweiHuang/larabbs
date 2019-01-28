@@ -214,3 +214,51 @@ body {
         }
     }
 }
+
+/*folders css*/
+.folders-index-page{
+    .folders-index{
+        .badge{
+            background-color: #d8d8d8;
+        }
+        .update_time{
+            color:#b3b3b3;
+        }
+        .folder-link{
+            color: #636b6f;
+        }
+    }
+
+
+}
+
+
+/*files masonry*/
+.masonry_glo{
+    column-count:1;
+    column-gap:0;
+
+    .item{
+        break-inside: avoid;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+}
+
+
+@media (min-width: 400px) {
+    .masonry_glo {
+        column-count: 2;
+    }
+}
+@media (min-width: 1200px) {
+    .masonry_glo {
+        column-count: 3;
+    }
+}
+
+
+
+
+
+/**/

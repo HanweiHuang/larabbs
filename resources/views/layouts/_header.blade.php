@@ -32,7 +32,7 @@
                     {{trans('header.notice')}}
                 </a></li>
                 @can('photo_lib')
-                <li class="{{ active_class(if_route('photo_lib.index')) }}"><a href="{{ route('photo_lib.index') }}">
+                <li class="{{ active_class(if_route('folders.index')) }}"><a href="{{ route('folders.index') }}">
                     {{trans('header.photo_lib')}}
                 </a></li>
                 @endcan

@@ -4,12 +4,12 @@
 
 @section('content')
 
-    <div class="row folders-index gallery">
-        <div class="col-lg-9 col-md-9">
+    <div class="row folders-show gallery">
+        <div class="col-lg-9 col-md-9 topic-list">
 
 
             <div class="alert alert-info" role="alert">
-                {{trans('gallery.gallery')}}
+                {{trans('gallery.folder_name') .': '. $folder}}
             </div>
 
 
@@ -28,9 +28,7 @@
                     {{-- 话题列表 --}}
                     {{-- @include('gallery._lib_list', ['topics' => $topics]) --}}
 
-                    @include('gallery._folder_list', ['folders' => $folders])
-
-
+                    @include('gallery._files_list', ['files' => $files, 'f_urls' => $f_urls])
 
                     {{-- 分页 --}}
                     {{-- {!! $topics->appends(Request::except('page'))->render() !!} --}}
