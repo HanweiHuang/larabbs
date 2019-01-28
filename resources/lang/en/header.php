@@ -10,4 +10,9 @@ return [
     'user_center' => 'User Center',
     'user_edit' => 'User Edit',
     'log_out' => 'Logout',
+
+    'log_in'=> 'Login',
+    'register' => 'Register',
+
+    'photo_lib' => 'Gallery',
 ];

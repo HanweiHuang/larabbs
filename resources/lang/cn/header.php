@@ -10,4 +10,9 @@ return [
     'user_center' => '用户中心',
     'user_edit' => '用户编辑',
     'log_out' => '登出',
+
+    'log_in'=> '登录',
+    'register' => '注册',
+
+    'photo_lib' => '相册',
 ];

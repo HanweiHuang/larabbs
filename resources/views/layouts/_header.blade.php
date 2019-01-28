@@ -31,6 +31,12 @@
                 <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 4))) }}"><a href="{{ route('categories.show', 4) }}">
                     {{trans('header.notice')}}
                 </a></li>
+                @can('photo_lib')
+                <li class="{{ active_class(if_route('folders.index')) }}"><a href="{{ route('folders.index') }}">
+                    {{trans('header.photo_lib')}}
+                </a></li>
+                @endcan
+
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -38,8 +44,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @guest
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
+                    <li><a href="{{ route('login') }}">{{trans('header.log_in')}}</a></li>
+                    <li><a href="{{ route('register') }}">{{trans('header.register')}}</a></li>
                 @else
                     <li>
                         <a href="{{ route('topics.create') }}">
