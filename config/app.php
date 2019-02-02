@@ -177,9 +177,14 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /* administrator provider for backend management*/
         Frozennode\Administrator\AdministratorServiceProvider::class,
 
-        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class
+        /*Qiniu service provider for cloud server*/
+        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
+
+        /*yun pian for message notice*/
+        App\Providers\EasySmsServiceProvider::class,
 
     ],
 
