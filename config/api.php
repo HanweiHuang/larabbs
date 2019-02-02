@@ -18,7 +18,7 @@ return [
     |
     */
 
-    'standardsTree' => env('API_STANDARDS_TREE', 'x'),
+    'standardsTree' => env('API_STANDARDS_TREE', 'prs'),
 
     /*
     |--------------------------------------------------------------------------
@@ -32,7 +32,7 @@ return [
     |
     */
 
-    'subtype' => env('larabbs', ''),
+    'subtype' => env('API_SUBTYPE', ''),
 
     /*
     |--------------------------------------------------------------------------
