@@ -77,5 +77,25 @@ visible
 comment //desc
 
 
+API部分
+#手机注册 API
+POST api/captchas (create validated pic)
+POST api/verificationCodes (send validated message)
+POST api/users (users register)
+
+流程：
+1.用户输入手机号
+2.通过手机号请求图片验证码，显示给用户
+3.用户输入正确的图片验证码，服务器发送验证码至用户手机
+4.用户填写，姓名，密码，及正确的短信验证码，完成注册
+
+
+
+verificationCodes 接口思路
+1.收到手机号的请求
+2.生成随机数，发送给短信服务器要求发送短信
+3.保存时间和随机数在缓存中，生成一个key
+4.返回给调用api的用户端key
+5.当手机接到短信，用户端就可以使用刚刚的key和验证信息再次调用注册接口来验证
 
 //
