@@ -78,4 +78,9 @@ comment //desc
 
 
 
-//
+
+//broadcast 实现reply自动更新
+1.后端redis 队列 + laravel的broadcast机制
+2.laravel-echo-server 监听broadcast发出的event
+3.laravel-echo 在前端获取数据更新
+* 要同时开启队列queue的进程和laravel-echo-server进程

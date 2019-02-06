@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Inspiring;
+use App\Events\UpdateReply;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,8 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+//Artisan::command('updateReply', function () {
+//    broadcast(new UpdateReply(date('Y-m-d h:i:s A').":  Update Reply!"));
+//    $this->comment("news sent");
+//})->describe('Send news');

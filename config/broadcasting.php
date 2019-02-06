@@ -2,6 +2,8 @@
 
 return [
 
+    'switch' => env('BROADCAST_SWITCH', false),
+
     /*
     |--------------------------------------------------------------------------
     | Default Broadcaster

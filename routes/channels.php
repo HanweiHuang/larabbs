@@ -14,3 +14,10 @@
 Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+/**
+ * reply update channel
+ */
+Broadcast::channel('update_reply', function ($user, $id) {
+    return true;
+});

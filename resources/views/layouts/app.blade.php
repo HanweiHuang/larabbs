@@ -39,6 +39,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
+    @yield('scripts_reply_update')
 </body>
 
 </html>

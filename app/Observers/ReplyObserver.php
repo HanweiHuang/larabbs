@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Events\UpdateReply;
 use App\Models\Reply;
 use App\Notifications\TopicReplied;
 
@@ -18,6 +19,9 @@ class ReplyObserver
         $reply->topic->increment('reply_count',1);
         //let user table add one notification record
         $topic->user->notify(new TopicReplied($reply));
+
+        //broadcast new reply alert
+        $this->broadcastReplyCount($topic);
     }
 
     public function creating(Reply $reply){
@@ -33,4 +37,19 @@ class ReplyObserver
     {
         $reply->topic->decrement('reply_count', 1);
     }
+
+    /**
+     * @param $topic
+     * for broadcast a new reply
+     */
+    private function broadcastReplyCount($topic){
+        if(!config('broadcasting.switch')) return;
+        $date = [
+            'topic_id' => $topic->id,
+            'reply_count' => $topic->reply_count,
+        ];
+        //broadcast here
+        broadcast(new UpdateReply($date));
+    }
+
 }

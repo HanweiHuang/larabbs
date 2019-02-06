@@ -27,7 +27,7 @@ class User extends Authenticatable
     }
 
     public function notify($instance){
-        //if current user is the one need to notify, return, don't need to notify
+        //if current user is itself, return, don't need to notify
         if($this->id == Auth::id()){
             return;
         }

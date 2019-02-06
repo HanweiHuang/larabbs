@@ -16,7 +16,7 @@
                             {{ $topic->title }}
                         </a>
                         <a class="pull-right" href="{{ $topic->link() }}" >
-                            <span class="badge"> {{ $topic->reply_count }} </span>
+                            <span class="badge" id="badge_{{$topic->id}}"> {{ $topic->reply_count }} </span>
                         </a>
                     </div>
 
@@ -50,3 +50,16 @@
 @else
     <div class="empty-block">Current No Data ~_~ </div>
 @endif
+
+@section('scripts_reply_update')
+    <script>
+        /*get dynamic updated data from backend and read it by Echo*/
+        Echo.channel('update_reply')
+            .listen('UpdateReply', function(e){
+            var data = e.message;
+            var top_id = data['topic_id'];
+            var reply_count = data['reply_count'];
+            document.getElementById("badge_"+top_id).innerHTML=reply_count;
+        });
+    </script>
+@stop
