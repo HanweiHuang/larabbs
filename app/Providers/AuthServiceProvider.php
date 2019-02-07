@@ -29,6 +29,10 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         \Horizon::auth(function($request){
+            //if user does not login
+            if(!\Auth::check()){
+                return false;
+            }
             return \Auth::user()->hasRole('SuperAdmin');
         });
 
