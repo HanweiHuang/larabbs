@@ -76,8 +76,8 @@ class User extends Authenticatable
         $this -> notification_count = 0;
         $this -> save();
         //unreadNotifications comes from HasDatabaseNotifications.php which was included by Notifiable.
-        //return Model of DatabaseNotification, this model is defined by laraval notification mechanism
-        //this model has a function called markasread which use to set a value for read_at
+        //return Model of DatabaseNotification, this model is defined by laravel notification mechanism
+        //this model has a function called markasread which used to set a value for read_at
         $this -> unreadNotifications -> markAsRead();
     }
 
