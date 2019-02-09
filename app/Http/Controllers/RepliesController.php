@@ -34,4 +34,9 @@ class RepliesController extends Controller
         return redirect()->to($reply->topic->link())->with('message', 'Deleted successfully.');
 		//return redirect()->route('replies.index')->with('message', 'Deleted successfully.');
 	}
+
+	public function index(){
+        return abort(404);
+    }
+
 }
