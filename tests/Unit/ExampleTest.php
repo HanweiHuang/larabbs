@@ -17,8 +17,4 @@ class ExampleTest extends TestCase
         $this->assertTrue(true);
 
     }
-
-    public function testClosure(){
-        $this->app->make();
-    }
 }
