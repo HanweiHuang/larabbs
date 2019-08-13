@@ -121,9 +121,9 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
+    //'log' => env('APP_LOG', 'single'),
 
-    'log_level' => env('APP_LOG_LEVEL', 'debug'),
+    //'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
     /*
     |--------------------------------------------------------------------------
@@ -179,7 +179,7 @@ return [
 
         Frozennode\Administrator\AdministratorServiceProvider::class,
 
-        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class
+        //zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class
 
     ],
 
