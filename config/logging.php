@@ -31,7 +31,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['daily'],
+            'channels' => ['single' ,'sentry'],
         ],
         'single' => [
             'driver' => 'single',
@@ -76,14 +76,15 @@ return [
             'driver' => 'errorlog',
             'level' => 'debug',
         ],
-
         'cron' => [
             'driver' => 'daily',
             'path' => storage_path('logs/job/error.log'),
             'level' => 'debug',
             'days' => 14,
         ],
-
-
+        'sentry' => [
+            'driver' => 'sentry',
+            'level' => 'error'
+        ]
     ],
 ];

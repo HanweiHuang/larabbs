@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f95c7614ac823ddec82e6d7c19eba1b",
+    "content-hash": "a202f651927fda2a82492d7398779d3c",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -3116,6 +3116,74 @@
                 "sentry"
             ],
             "time": "2019-06-13T11:27:23+00:00"
+        },
+        {
+            "name": "sentry/sentry-laravel",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/getsentry/sentry-laravel.git",
+                "reference": "1e5f644b62ee73424ad8316e37b9a2dcf7290de8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/1e5f644b62ee73424ad8316e37b9a2dcf7290de8",
+                "reference": "1e5f644b62ee73424ad8316e37b9a2dcf7290de8",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.0 - 5.8",
+                "php": "^7.1",
+                "sentry/sdk": "^2.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "2.14.*",
+                "laravel/framework": "5.8.*",
+                "orchestra/testbench": "3.8.*",
+                "phpunit/phpunit": "7.5.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Sentry\\Laravel\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Sentry": "Sentry\\Laravel\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Sentry\\Laravel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sentry",
+                    "email": "accounts@sentry.io"
+                }
+            ],
+            "description": "Laravel SDK for Sentry (https://sentry.io)",
+            "homepage": "https://sentry.io",
+            "keywords": [
+                "crash-reporting",
+                "crash-reports",
+                "error-handler",
+                "error-monitoring",
+                "laravel",
+                "log",
+                "logging",
+                "sentry"
+            ],
+            "time": "2019-07-04T10:36:53+00:00"
         },
         {
             "name": "spatie/laravel-permission",
