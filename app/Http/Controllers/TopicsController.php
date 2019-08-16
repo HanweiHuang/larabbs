@@ -2,25 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Handlers\ImageUploadHandler;
 use App\Models\Category;
-use App\Models\Topic;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\TopicRequest;
-
-use App\Models\User;
 use App\Models\Link;
+use App\Models\Topic;
+use App\Models\User;
+use App\Http\Requests\TopicRequest;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
-use Auth;
 
 class TopicsController extends Controller
 {
+    /**
+     * TopicsController constructor.
+     */
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
+    /**
+     * @param Request $request
+     * @param Topic $topic
+     * @param User $user
+     * @param Link $link
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
 	public function index(Request $request, Topic $topic, User $user, Link $link)
 	{
 		$topics =  $topic->withOrder($request->order)->paginate();
@@ -48,6 +58,7 @@ class TopicsController extends Controller
 	public function create(Topic $topic)
 	{
         $categories = Category::all();
+
 		return view('topics.create_and_edit', compact('topic','categories'));
 	}
 
@@ -61,33 +72,71 @@ class TopicsController extends Controller
 	    $topic->fill($request->all());
 	    $topic->user_id = Auth::id();
 	    $topic->save();
-		//$topic = Topic::create($request->all());
+
 		return redirect()->to($topic->link())->with('message', 'Created successfully.');
 	}
 
+    /**
+     * @param Topic $topic
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
 	public function edit(Topic $topic)
 	{
-        $this->authorize('update', $topic);
-        $categories = Category::all();
+	    try {
+            $this->authorize('update', $topic);
+            $categories = Category::all();
+        }catch (AuthorizationException $e) {
+            Log::info('TopicController.edit', ['exception' => $e]);
+        }catch (\Exception $e) {
+            Log::error('TopicController.edit', ['exception' => $e]);
+        }
+
 		return view('topics.create_and_edit', compact('topic','categories'));
 	}
 
+    /**
+     * @param TopicRequest $request
+     * @param Topic $topic
+     * @return \Illuminate\Http\RedirectResponse
+     */
 	public function update(TopicRequest $request, Topic $topic)
 	{
-		$this->authorize('update', $topic);
-		$topic->update($request->all());
+        try{
+            $this->authorize('update', $topic);
+            $topic->update($request->all());
+        }catch (AuthorizationException $e) {
+            Log::info('TopicController.update', ['exception' => $e]);
+        }catch (\Exception $e) {
+            Log::error('TopicController.update', ['exception' => $e]);
+        }
 
 		return redirect()->to($topic->link())->with('message', 'Updated successfully.');
 	}
 
+    /**
+     * @param Topic $topic
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
 	public function destroy(Topic $topic)
 	{
-		$this->authorize('destroy', $topic);
-		$topic->delete();
+	    try{
+            $this->authorize('destroy', $topic);
+            $topic->delete();
+        }catch (AuthorizationException $e) {
+            Log::info('TopicController.destroy', ['exception' => $e]);
+        }catch (\Exception $e) {
+	        Log::error('TopicController.destroy', ['exception' => $e]);
+        }
 
 		return redirect()->route('topics.index')->with('message', 'Deleted successfully.');
 	}
 
+    /**
+     * @param Request $request
+     * @param ImageUploadHandler $uploader
+     * @return array
+     */
 	public function uploadImage(Request $request, ImageUploadHandler $uploader){
 
 	    $data = [

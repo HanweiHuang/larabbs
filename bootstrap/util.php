@@ -1,7 +1,10 @@
 <?php
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
-//for customized daily log
+/**
+ * for customized daily log
+ */
 if (!function_exists('laraLog')) {
     function laraLog($data, $path=null)
     {
@@ -12,14 +15,14 @@ if (!function_exists('laraLog')) {
         }
         $monolog = Log::getMonolog();
         $monolog->popHandler();
-        Log::useDailyFiles(storage_path().$path, 30 );
+        Log::info(storage_path().$path, 30 );
         Log::info('single-log: '. $data);
     }
 }
 
-
-//fro transfer
-
+/**
+ * fro transfer
+ */
 if(!function_exists('T')){
     function T($code, $lang='en'){
 

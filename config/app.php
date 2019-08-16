@@ -121,9 +121,9 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
+    //'log' => env('APP_LOG', 'single'),
 
-    'log_level' => env('APP_LOG_LEVEL', 'debug'),
+    //'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
     /*
     |--------------------------------------------------------------------------
@@ -179,7 +179,9 @@ return [
 
         Frozennode\Administrator\AdministratorServiceProvider::class,
 
-        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class
+        //zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class
+
+        Sentry\Laravel\ServiceProvider::class,
 
     ],
 
@@ -229,6 +231,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Sentry' => Sentry\Laravel\Facade::class,
 
     ],
 
